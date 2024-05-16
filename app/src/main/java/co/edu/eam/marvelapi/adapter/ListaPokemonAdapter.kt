@@ -22,11 +22,12 @@ class ListaPokemonAdapter (var context: Context): RecyclerView.Adapter<ListaPoke
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val p = dataset[position]
         holder.nombreTextView.text = p.name
 
         Glide.with(context)
-            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.number}.png")
+            .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${p.getPokemonNumber()}.png")
             .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(holder.fotoImageView)
